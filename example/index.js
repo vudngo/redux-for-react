@@ -6,7 +6,7 @@ import createRavenMiddleware from "../"; // "raven-for-redux"
 
 const RAVEN_DSN = "https://e765643734ed4a22b79aac2e92f5c81e@sentry.io/1243031";
 Raven.config(RAVEN_DSN, {
-  release: "36dfc6d9676f4f9957488d375641cb0670b2a31c",
+  release: "65a7dbb3ffdd2ec0be9b8901823fb8682af3a211",
   allowDuplicates: true
 }).install();
 
@@ -34,7 +34,8 @@ const store = createStore(
 );
 
 document.getElementById("crash").addEventListener("click", () => {
-  throw new Error("Whoops! My application crashed!");
+  var a = undefinedVariable;
+  //throw new Error("Whoops! My application crashed!");
 });
 document.getElementById("crash-in-reducer").addEventListener("click", () => {
   store.dispatch({ type: "CRASH_IN_THE_REDUCER" });
