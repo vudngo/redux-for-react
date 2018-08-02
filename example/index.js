@@ -34,8 +34,7 @@ const store = createStore(
 );
 
 document.getElementById("crash").addEventListener("click", () => {
-  var a = "hello world";
-  //throw new Error("Whoops! My application crashed!");
+  throw new Error("Whoops! My application crashed!");
 });
 document.getElementById("crash-in-reducer").addEventListener("click", () => {
   store.dispatch({ type: "CRASH_IN_THE_REDUCER" });
