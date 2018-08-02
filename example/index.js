@@ -6,7 +6,7 @@ import createRavenMiddleware from "../"; // "raven-for-redux"
 
 const RAVEN_DSN = "https://e765643734ed4a22b79aac2e92f5c81e@sentry.io/1243031";
 Raven.config(RAVEN_DSN, {
-  release: "62e4f54c81ba84fde2fcbce8e17f16869ff42001",
+  release: "0a8e4d2e5d2c4bb3a57afbaac396f18cfaa6e5f5",
   allowDuplicates: true
 }).install();
 
