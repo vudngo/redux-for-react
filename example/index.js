@@ -6,7 +6,7 @@ import createRavenMiddleware from "../"; // "raven-for-redux"
 
 const RAVEN_DSN = "https://e765643734ed4a22b79aac2e92f5c81e@sentry.io/1243031";
 Raven.config(RAVEN_DSN, {
-  release: "d1f884cc08fcd1ef8250359cae1258f6b526efe5",
+  release: "62e4f54c81ba84fde2fcbce8e17f16869ff42001",
   allowDuplicates: true
 }).install();
 
@@ -33,7 +33,11 @@ const store = createStore(
   )
 );
 
-document.getElementById("crash").addEventListener("click", () => {
+document.getElementById("checkout").addEventListener("click", () => {
+  Raven.setTagsContext({
+    feature: "checkout",
+    uuid: "90as8huertnqjo3iwruabfnq34q34twrfage3tg"
+  });
   var a = undefinedVariable;
   //throw new Error("Whoops! My application crashed!");
 });
