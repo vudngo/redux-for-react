@@ -6,7 +6,7 @@ import createRavenMiddleware from "../"; // "raven-for-redux"
 
 const RAVEN_DSN = "https://e765643734ed4a22b79aac2e92f5c81e@sentry.io/1243031";
 Raven.config(RAVEN_DSN, {
-  release: "0c3998e51431972e37826388647b6d069dd2c0d2",
+  release: "d1f884cc08fcd1ef8250359cae1258f6b526efe5",
   allowDuplicates: true
 }).install();
 
@@ -15,7 +15,7 @@ const reducer = (state = "Hello world!", action) => {
   switch (action.type) {
     case "CRASH_IN_THE_REDUCER":
       throw new Error("Whoops, we crashed in the reducer!");
-    case "UPDATE_MY_STRING":
+    case "UPDATE_MY_STATE":
       return action.str;
     default:
       return state;
@@ -42,7 +42,7 @@ document.getElementById("crash-in-reducer").addEventListener("click", () => {
 });
 document.getElementById("set-state").addEventListener("click", () => {
   store.dispatch({
-    type: "UPDATE_MY_STRING",
+    type: "UPDATE_MY_STATE",
     str: document.getElementById("state").value
   });
 });
@@ -61,12 +61,12 @@ render(<Button />, document.getElementById("react-app"));
 
 /*
 // This should leave a breadcrumb, and leave lastAction and state as context.
-store.dispatch({ type: "UPDATE_MY_STRING", str: "I've reached step one!" });
+store.dispatch({ type: "UPDATE_MY_STATE", str: "I've reached step one!" });
 
 // This should leave a breadcrumb, and leave lastAction as context, even though
 // it will crash.
 
-store.dispatch({ type: "UPDATE_MY_STRING", str: "I've reached step two!" });
+store.dispatch({ type: "UPDATE_MY_STATE", str: "I've reached step two!" });
 
 // We should still see our current state and lastAction in our context, even
 // though we crashed outside the reducer.
